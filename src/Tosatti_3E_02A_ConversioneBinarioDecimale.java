@@ -38,7 +38,7 @@ public class Tosatti_3E_02A_ConversioneBinarioDecimale {
         }
 
         if (flagBinario)
-            System.out.println(numeroDecmale);
+            System.out.println(numeroBinario);
 
 
     }
