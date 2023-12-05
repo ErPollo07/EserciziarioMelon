@@ -6,7 +6,7 @@ public class Tosatti_3E_02A_ConversioneBinarioDecimale {
         Scanner tastiera = new Scanner(System.in);
 
         String numeroBinario = ""; // input
-        double numeroDecmale = 0; // output
+        double numeroDecimale = 0; // output
 
         double carattere = 0;
         double pow = 0;
@@ -24,7 +24,7 @@ public class Tosatti_3E_02A_ConversioneBinarioDecimale {
             carattere  = Character.getNumericValue(numeroBinario.charAt(i - 1));
             if (carattere == 1 || carattere == 0) {
                 // nuumeroDecimale = numeroDecimale (int)char * 10**i
-                numeroDecmale = numeroDecmale + carattere * Math.pow(2.0, pow);
+                numeroDecimale = numeroDecimale + carattere * Math.pow(2.0, pow);
             }
             else {
                 System.out.println("Numero non valido");
@@ -38,7 +38,7 @@ public class Tosatti_3E_02A_ConversioneBinarioDecimale {
         }
 
         if (flagBinario)
-            System.out.println(numeroBinario);
+            System.out.println(numeroDecimale);
 
 
     }
