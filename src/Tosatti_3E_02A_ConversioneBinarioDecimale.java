@@ -22,13 +22,12 @@ public class Tosatti_3E_02A_ConversioneBinarioDecimale {
         // sto dentro al ciclo fino a quando non arrivo alla fine del numero
         for (int i = numeroBinario.length(); i > 0; i--) {
 
-            // Prendo il carattere
-            carattere  = Character.getNumericValue(numeroBinario.charAt(i - 1));
+            carattere = (double)numeroBinario.charAt(i - 1) - 48;
 
             // Controllo se il carattere é 0 o 1
             // Se si allora calcolo il numero
-            if (carattere == 1 || carattere == 0) {
-                // FORMULA: numeroDecimale = numeroDecimale (int)char * 10**pow
+            if (numeroBinario.charAt(i - 1) == '1' || numeroBinario.charAt(i - 1) == '0') {
+                // FORMULA: numeroDecimale = numeroDecimale + (int)char * 10**pow
                 numeroDecimale = numeroDecimale + carattere * Math.pow(2.0, pow);
             }
 
