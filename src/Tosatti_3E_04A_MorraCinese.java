@@ -31,7 +31,10 @@ public class Tosatti_3E_04A_MorraCinese {
 
         System.out.println("MORRA CINESE");
 
+        System.out.print("\nPremere invio per continuare ");
+        _pause = scanner.nextLine();
 
+        // Ciclo per ripetere la partita
         do {
             // Aggiorno il counter delle partite
             counterPartite++;
