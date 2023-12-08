@@ -16,32 +16,34 @@ import java.util.Scanner;
 
 public class Tosatti_3E_04A_MorraCinese {
     public static void main(String[] args) {
+
         Scanner scanner = new Scanner(System.in);
 
 
-        String inputPlayer1;
-        String inputPlayer2;
+        String inputPlayer1; // input player 1
+        String inputPlayer2; // input player 2
 
-        boolean interruptGame = false;
-        String _pause;
+        boolean interruptGame = false; // var per capire se il gioco é stato interrotto da uno dei due giocatori
 
-        int counterPartite = 0;
+        String _pause; // Carattere di pausa alla fine di ogni partita
+
+        int counterPartite = 0; // contatore delle partite
 
         System.out.println("MORRA CINESE");
 
 
         do {
+            // Aggiorno il counter delle partite
             counterPartite++;
-
-
 
             // Prendo l'input del giocatore 1
             do {
                 ClrScr();
 
                 // Mostro la partita corente
-                System.out.println("PARTITA " + counterPartite);
+                System.out.println("PARTITA " + counterPartite + "\n");
 
+                // Menu di scelta del giocatore 1
                 System.out.println("E' il turno del gicatore 1");
                 System.out.println(
                     "Scegliere cosa inserire:" +
@@ -64,8 +66,9 @@ public class Tosatti_3E_04A_MorraCinese {
                     ClrScr();
 
                     // Mostro la partita corente
-                    System.out.println("PARTITA " + counterPartite);
+                    System.out.println("PARTITA " + counterPartite + "\n");
 
+                    // menu di scelta del giocatore 2
                     System.out.println("E' il turno del gicatore 2");
                     System.out.println(
                             "Scegliere cosa inserire:" +
@@ -79,6 +82,7 @@ public class Tosatti_3E_04A_MorraCinese {
 
                 } while (!(inputPlayer2.equals("J") || inputPlayer2.equals("K") || inputPlayer2.equals("L") || inputPlayer2.equals("X")));
 
+                // controllo se il giocatore 2 ha inserito la X
                 if (inputPlayer2.equals("X"))
                     interruptGame = true;
 
@@ -103,7 +107,7 @@ public class Tosatti_3E_04A_MorraCinese {
                         System.out.println("\nIl giocatore 2 ha vinto!!");
                     }
 
-                    System.out.println("Premere qualsiasi tasto per continuare: ");
+                    System.out.print("\nPremere invio per continuare ");
                     _pause = scanner.nextLine();
                     _pause = scanner.nextLine();
                 }
@@ -111,9 +115,12 @@ public class Tosatti_3E_04A_MorraCinese {
             else {
                 interruptGame = true;
             }
-        } while (!interruptGame);
+        } while (!interruptGame); // se nesuno ha inserito il carattere X allora il gioco continua
 
-        System.out.println("Gioco finito.");
+
+        System.out.println("\nGioco finito.");
+
+        // stampo quante partite sono state completate
         System.out.println("Partite completate: " + (counterPartite - 1));
     }
 
