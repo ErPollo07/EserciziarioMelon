@@ -23,6 +23,7 @@ public class Tosatti_3E_04A_MorraCinese {
         String inputPlayer2;
 
         boolean interruptGame = false;
+        String _pause;
 
         int counterPartite = 0;
 
@@ -32,11 +33,14 @@ public class Tosatti_3E_04A_MorraCinese {
         do {
             counterPartite++;
 
-            System.out.println("PARTITA " + counterPartite);
+
 
             // Prendo l'input del giocatore 1
             do {
                 ClrScr();
+
+                // Mostro la partita corente
+                System.out.println("PARTITA " + counterPartite);
 
                 System.out.println("E' il turno del gicatore 1");
                 System.out.println(
@@ -58,6 +62,9 @@ public class Tosatti_3E_04A_MorraCinese {
                 // Perndo l'input del giocatore 2
                 do {
                     ClrScr();
+
+                    // Mostro la partita corente
+                    System.out.println("PARTITA " + counterPartite);
 
                     System.out.println("E' il turno del gicatore 2");
                     System.out.println(
@@ -88,12 +95,17 @@ public class Tosatti_3E_04A_MorraCinese {
                             (inputPlayer1.equals("A") && inputPlayer2.equals("K")) ||
                             (inputPlayer1.equals("D") && inputPlayer2.equals("J"))) {
 
-                        System.out.println("Il giocatore 1 a vinto");
+                        System.out.println("\nIl giocatore 1 a vinto!!");
                     }
+
                     // Vittoria giocatore 2
                     else {
-                        System.out.println("Il giocatore 2 ha vinto");
+                        System.out.println("\nIl giocatore 2 ha vinto!!");
                     }
+
+                    System.out.println("Premere qualsiasi tasto per continuare: ");
+                    _pause = scanner.nextLine();
+                    _pause = scanner.nextLine();
                 }
             }
             else {
@@ -103,8 +115,6 @@ public class Tosatti_3E_04A_MorraCinese {
 
         System.out.println("Gioco finito.");
         System.out.println("Partite completate: " + (counterPartite - 1));
-
-
     }
 
     private static void ClrScr() {
