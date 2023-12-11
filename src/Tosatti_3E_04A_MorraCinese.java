@@ -92,6 +92,9 @@ public class Tosatti_3E_04A_MorraCinese {
                 // Calcola tutti i vari casi
                 if (!interruptGame) {
 
+                    System.out.println("\nIl giocatore 1 ha giocato: " + inputPlayer1);
+                    System.out.println("Il giocatore 2 ha giocato: " + inputPlayer2);
+
                     // pareggio
                     if ((inputPlayer1.equals("A") && inputPlayer2.equals("J")) || (inputPlayer1.equals("S") && inputPlayer2.equals("K")) || (inputPlayer1.equals("D") && inputPlayer2.equals("L"))) {
                         System.out.println("Pareggio");
