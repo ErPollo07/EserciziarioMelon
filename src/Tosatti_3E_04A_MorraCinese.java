@@ -85,7 +85,7 @@ public class Tosatti_3E_04A_MorraCinese {
 
                 } while (!(inputPlayer2.equals("J") || inputPlayer2.equals("K") || inputPlayer2.equals("L") || inputPlayer2.equals("X")));
 
-                // controllo se il giocatore 2 ha inserito la X
+                // controllo se il giocatore 2 ha inserito la X se si non fa il calcolo di chi vince
                 if (inputPlayer2.equals("X"))
                     interruptGame = true;
 
