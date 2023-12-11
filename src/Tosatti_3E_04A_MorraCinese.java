@@ -13,15 +13,17 @@ INPUT DEI GIOCATORI
 */
 
 import java.util.Scanner;
+import java.util.Random;
 
 public class Tosatti_3E_04A_MorraCinese {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
+        Random random = new Random();
 
 
         String inputPlayer1; // input player 1
-        String inputPlayer2; // input player 2
+        String inputAI; // input player 2
 
         boolean interruptGame = false; // var per capire se il gioco é stato interrotto da uno dei due giocatori
 
@@ -49,11 +51,11 @@ public class Tosatti_3E_04A_MorraCinese {
                 // Menu di scelta del giocatore 1
                 System.out.println("E' il turno del gicatore 1");
                 System.out.println(
-                    "Scegliere cosa inserire:" +
-                    "\n\t1. A - carta" +
-                    "\n\t2. S - sasso" +
-                    "\n\t3. D - forbici\n"
-                    );
+                        "Scegliere cosa inserire:" +
+                                "\n\t1. A - carta" +
+                                "\n\t2. S - sasso" +
+                                "\n\t3. D - forbici\n"
+                );
 
                 // Chiedo di inserire la scelta
                 System.out.println("Inserire la scelta: ");
@@ -64,43 +66,30 @@ public class Tosatti_3E_04A_MorraCinese {
             // se il giocatore 1 non preme x allora vai avanti
             if (!inputPlayer1.equals("X")) {
 
-                // Perndo l'input del giocatore 2
-                do {
-                    ClrScr();
+                // Prendo il valore random tra le lettere disponibili
+                String[] x = {"J", "K", "L"}; // Lista di valori disponibili
+                int _randomIndex = random.nextInt(x.length); // Prendo un random index
+                inputAI = x[_randomIndex];
 
-                    // Mostro la partita corente
-                    System.out.println("PARTITA " + counterPartite + "\n");
-
-                    // menu di scelta del giocatore 2
-                    System.out.println("E' il turno del gicatore 2");
-                    System.out.println(
-                            "Scegliere cosa inserire:" +
-                            "\n\t1. J - carta" +
-                            "\n\t2. K - sasso" +
-                            "\n\t3. L - forbici\n");
-
-                    // Chiedo di inserire la scelta
-                    System.out.println("Inserire la scelta: ");
-                    inputPlayer2 = scanner.next().toUpperCase();
-
-                } while (!(inputPlayer2.equals("J") || inputPlayer2.equals("K") || inputPlayer2.equals("L") || inputPlayer2.equals("X")));
-
-                // controllo se il giocatore 2 ha inserito la X
-                if (inputPlayer2.equals("X"))
+                // controllo se il giocatore 2 ha inserito la X se si non fa il calcolo di chi vince
+                if (inputAI.equals("X"))
                     interruptGame = true;
 
                 // Calcola tutti i vari casi
                 if (!interruptGame) {
 
+                    System.out.println("\nIl giocatore 1 ha giocato: " + inputPlayer1);
+                    System.out.println("\nIl giocatore 2 ha giocato: " + inputAI);
+
                     // pareggio
-                    if ((inputPlayer1.equals("A") && inputPlayer2.equals("J")) || (inputPlayer1.equals("S") && inputPlayer2.equals("K")) || (inputPlayer1.equals("D") && inputPlayer2.equals("L"))) {
-                        System.out.println("Pareggio");
+                    if ((inputPlayer1.equals("A") && inputAI.equals("J")) || (inputPlayer1.equals("S") && inputAI.equals("K")) || (inputPlayer1.equals("D") && inputAI.equals("L"))) {
+                        System.out.println("\nPareggio");
                     }
 
                     // Vittoria giocatore 1
-                    else if ((inputPlayer1.equals("S") && inputPlayer2.equals("L")) ||
-                            (inputPlayer1.equals("A") && inputPlayer2.equals("K")) ||
-                            (inputPlayer1.equals("D") && inputPlayer2.equals("J"))) {
+                    else if ((inputPlayer1.equals("S") && inputAI.equals("L")) ||
+                            (inputPlayer1.equals("A") && inputAI.equals("K")) ||
+                            (inputPlayer1.equals("D") && inputAI.equals("J"))) {
 
                         System.out.println("\nIl giocatore 1 a vinto!!");
                     }
