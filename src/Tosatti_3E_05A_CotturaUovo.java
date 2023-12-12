@@ -14,28 +14,36 @@ public class Tosatti_3E_05A_CotturaUovo {
 
         String _pause; // Character for pause
 
-        System.out.println("Benvenuti al ristorante");
+        ClrScr();
+
+        System.out.println("Benvenuti al ristorante premere invio per cucinare l'uovo ");
 
         System.out.println();
         _pause = scanner.nextLine();
 
+        ClrScr();
+
+
         // mettere tempo 3m
         // fase di test tempo 20s
-        for (int i = 20; i > 0; i--) {
+        for (int i = 2; i > 0; i--) {
 
             UovoCheBolle();
 
-            System.out.println("\n\nTimer: " + i);
+            System.out.println("\nTimer: " + i);
             Wait(1000);
             ClrScr();
         }
 
+        UovoCotto();
 
+        System.out.println("Abbiamo cotto l'uovo!!!!!");
     }
 
     private static void UovoNonBollito() {
 
         System.out.println("""
+                  
                   ,'"`.
                  /     \\
                 :       :
@@ -47,6 +55,7 @@ public class Tosatti_3E_05A_CotturaUovo {
     private static void UovoCheBolle() {
 
         System.out.println("""
+                  
                   °  ,'"`. °   °
                 °   /     \\ °
                °   :       :  °
@@ -62,11 +71,12 @@ public class Tosatti_3E_05A_CotturaUovo {
     private static void UovoCotto() {
 
         System.out.println("""
+                   
                     ,'"`.
                    /  _  \\
                   : /   \\ :
                   : \\___/ :
-                   `.___,' 
+                   `.___,'
                 """);
     }
 
