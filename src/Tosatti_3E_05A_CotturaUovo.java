@@ -16,16 +16,17 @@ public class Tosatti_3E_05A_CotturaUovo {
 
         ClrScr();
 
-        System.out.println("Benvenuti al ristorante premere invio per cucinare l'uovo ");
+        UovoNonBollito();
+
+        System.out.println("Benvenuti al ristorante premere invio per cucinare questo bell'uovo");
 
         System.out.println();
         _pause = scanner.nextLine();
 
         ClrScr();
 
-
         // mettere tempo 3m
-        // fase di test tempo 20s
+        // fase di test tempo 2s
         for (int i = 2; i > 0; i--) {
 
             UovoCheBolle();
