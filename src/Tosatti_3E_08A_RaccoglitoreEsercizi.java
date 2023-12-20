@@ -1,4 +1,3 @@
-import java.util.Enumeration;
 import java.util.Scanner;
 
 public class Tosatti_3E_08A_RaccoglitoreEsercizi {
@@ -24,8 +23,8 @@ public class Tosatti_3E_08A_RaccoglitoreEsercizi {
 
             System.out.println("\n\nSe vuoi continuare inserire un numero diverso da 0: ");
             continuare = scanner.nextInt();
-        } while(continuare != 0);
 
+        } while(continuare != 0);
     }
 
     private static void Es1() {
