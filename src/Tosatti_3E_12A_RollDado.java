@@ -8,10 +8,15 @@ public class Tosatti_3E_12A_RollDado {
 
         int numeroG1;
         int numeroG2;
+        String _pause;
 
         String giocatore1 = "Melon", giocatore2 = "Raspa";
 
         numeroG1 = SimulazioneRollG1(giocatore1);
+
+        System.out.println("Premere invio per continuare");
+        _pause = scanner.nextLine();
+
         numeroG2 = SimulazioneRollG2(giocatore2);
 
         if (numeroG1 == numeroG2) {
