@@ -10,7 +10,7 @@ public class Tosatti_3E_12A_RollDado {
         int numeroG2;
         String _pause;
 
-        String giocatore1 = "Melon", giocatore2 = "Raspa";
+        String giocatore1 = "Zanotti", giocatore2 = "Chiarion";
 
         numeroG1 = SimulazioneRollG1(giocatore1);
 
@@ -39,8 +39,7 @@ public class Tosatti_3E_12A_RollDado {
                 System.out.println("Al giocatore " + g1 + " uscito :");
                 valoreFaccia = random.nextInt(0, 6) + 1;
                 FacceDado(valoreFaccia);
-            }
-            else {
+            } else {
                 FacceDado(i);
                 Wait(50);
                 ClrScr();
@@ -61,8 +60,7 @@ public class Tosatti_3E_12A_RollDado {
                 System.out.println("Al giocatore " + g2 + " uscito :");
                 valoreFaccia = random.nextInt(0, 6) + 1;
                 FacceDado(valoreFaccia);
-            }
-            else {
+            } else {
                 FacceDado(i);
                 Wait(50);
                 ClrScr();
@@ -72,8 +70,8 @@ public class Tosatti_3E_12A_RollDado {
         return valoreFaccia;
     }
 
-    private static void FacceDado(int valoreFaccia) {
-        switch (valoreFaccia) {
+    private static void FacceDado(int valFaccia) {
+        switch (valFaccia) {
             case 1:
                 System.out.println("\t\t\t\t\t ╔═════════╗");
                 System.out.println("\t\t\t\t\t ║         ║");
@@ -119,11 +117,10 @@ public class Tosatti_3E_12A_RollDado {
         }
     }
 
-
     private static void ClrScr() {
         try {
             new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-        } catch (Exception e ) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
