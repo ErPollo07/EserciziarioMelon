@@ -23,11 +23,11 @@ public class Tosatti_3E_04A_MorraCinese {
         String inputPlayer1; // input player 1
         String inputPlayer2; // input player 2
 
-        boolean interruptGame = false; // var per capire se il gioco é stato interrotto da uno dei due giocatori
+        boolean interruptGame = false; // var to comprend if the game is interrupted
 
-        String _pause; // Carattere di pausa alla fine di ogni partita
+        String _pause; // character of pause
 
-        int counterPartite = 0; // contatore delle partite
+        int counterGame = 0; // conter of match
 
         System.out.println("MORRA CINESE");
 
@@ -37,16 +37,16 @@ public class Tosatti_3E_04A_MorraCinese {
         // Ciclo per ripetere la partita
         do {
             // Aggiorno il counter delle partite
-            counterPartite++;
+            counterGame++;
 
-            // Prendo l'input del giocatore 1
+            // Take input
             do {
                 ClrScr();
 
-                // Mostro la partita corente
-                System.out.println("PARTITA " + counterPartite + "\n");
+                // Show current game
+                System.out.println("PARTITA " + counterGame + "\n");
 
-                // Menu di scelta del giocatore 1
+                // Menu of choice of player 1
                 System.out.println("E' il turno del gicatore 1");
                 System.out.println(
                     "Scegliere cosa inserire:" +
@@ -69,7 +69,7 @@ public class Tosatti_3E_04A_MorraCinese {
                     ClrScr();
 
                     // Mostro la partita corente
-                    System.out.println("PARTITA " + counterPartite + "\n");
+                    System.out.println("PARTITA " + counterGame + "\n");
 
                     // menu di scelta del giocatore 2
                     System.out.println("E' il turno del gicatore 2");
@@ -127,7 +127,7 @@ public class Tosatti_3E_04A_MorraCinese {
         System.out.println("\nGioco finito.");
 
         // stampo quante partite sono state completate
-        System.out.println("Partite completate: " + (counterPartite - 1));
+        System.out.println("Partite completate: " + (counterGame - 1));
     }
 
     private static void ClrScr() {

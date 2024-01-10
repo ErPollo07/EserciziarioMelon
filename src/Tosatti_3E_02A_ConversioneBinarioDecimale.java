@@ -5,36 +5,36 @@ public class Tosatti_3E_02A_ConversioneBinarioDecimale {
     public static void main(String[] args) {
         Scanner tastiera = new Scanner(System.in);
 
-        String numeroBinario = ""; // input
-        double numeroDecimale = 0; // output
+        String binaryNumber = ""; // input
+        double decimalNumber = 0; // output
 
         // variabili di calcolo
-        double carattere = 0;
+        double character = 0;
         double pow = 0;
-        boolean flagBinario = true;
+        boolean flagBinary = true;
 
         System.out.println("Conversione numero binario in numero decimale\n");
 
         // Acquisisco numero binario
         System.out.println("Inserisci un numero binario: ");
-        numeroBinario = tastiera.next();
+        binaryNumber = tastiera.next();
 
         // sto dentro al ciclo fino a quando non arrivo alla fine del numero
-        for (int i = numeroBinario.length(); i > 0; i--) {
+        for (int i = binaryNumber.length(); i > 0; i--) {
 
-            carattere = (double)numeroBinario.charAt(i - 1) - 48;
+            character = (double)binaryNumber.charAt(i - 1) - 48;
 
             // Controllo se il carattere é 0 o 1
             // Se si allora calcolo il numero
-            if (numeroBinario.charAt(i - 1) == '1' || numeroBinario.charAt(i - 1) == '0') {
+            if (binaryNumber.charAt(i - 1) == '1' || binaryNumber.charAt(i - 1) == '0') {
                 // FORMULA: numeroDecimale = numeroDecimale + (int)char * 10**pow
-                numeroDecimale = numeroDecimale + carattere * Math.pow(2.0, pow);
+                decimalNumber = decimalNumber + character * Math.pow(2.0, pow);
             }
 
             // se il carattere non é valido
             else {
                 System.out.println("Numero non valido");
-                flagBinario= false;
+                flagBinary= false;
                 break;
             }
 
@@ -43,7 +43,7 @@ public class Tosatti_3E_02A_ConversioneBinarioDecimale {
         }
 
         // se il numero é valido allora stampo il risultato
-        if (flagBinario)
-            System.out.println(numeroDecimale);
+        if (flagBinary)
+            System.out.println(decimalNumber);
     }
 }

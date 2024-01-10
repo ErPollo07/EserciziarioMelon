@@ -31,11 +31,11 @@ public class Tosatti_3E_01B_Vinaio {
             numberOfClient++;
 
             // Ask the client which vine he wants
-            // Verifying if the vine is included
             do {
                 System.out.println("Which type of vine you want (Barbera, Lugana, Merlot)?");
                 vine = scanner.next();
 
+                // Verifying if the vine is included
                 if (!(vine.equals("Barbera") || vine.equals("Lugana") || vine.equals("Merlot"))) {
                     System.out.println("You must insert Barbera or Lugana or Merlot");
                 }
@@ -52,7 +52,7 @@ public class Tosatti_3E_01B_Vinaio {
             } while (numberBottlesPurchased <= 0);
 
 
-            // Calculate the price
+            // Calculate the price based on the
             if (vine.equals("Barbera")) {
                 price = numberBottlesPurchased * capacity * priceLitreBarbera;
             }

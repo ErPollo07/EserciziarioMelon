@@ -4,31 +4,31 @@ public class Tosatti_3E_03A_Orario {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        int ore = 0, minuti = 0, secondi = 0;
+        int hours = 0, minutes = 0, seconds = 0;
         double resto = 0;
-        String continuare;
+        String _continuare;
 
         do {
             ClrScr();
 
             System.out.println("inserisci il tempo in secondi: ");
-            secondi = scanner.nextInt();
+            seconds = scanner.nextInt();
 
             // calcolo le ore
-            if (secondi < 86400 && secondi > 0) {
+            if (seconds < 86400 && seconds > 0) {
 
                 // calcolo le ore
-                ore = secondi / 3600;
-                secondi = secondi % 3600;
+                hours = seconds / 3600;
+                seconds = seconds % 3600;
 
                 // calcolo i minuti
-                while (secondi >= 60) {
-                    minuti = secondi / 60;
-                    secondi = secondi % 60;
+                while (seconds >= 60) {
+                    minutes = seconds / 60;
+                    seconds = seconds % 60;
                 }
 
                 // Visualizzo il tempo
-                System.out.println("Il tempo e' " + ore + ":" + minuti + ":" + secondi);
+                System.out.println("Il tempo e' " + hours + ":" + minutes + ":" + seconds);
             }
 
             // se il numero di secondi supera quelli in un secondo allora il numero non é valido
@@ -37,9 +37,9 @@ public class Tosatti_3E_03A_Orario {
             }
 
             System.out.println("Voui continuare: ");
-            continuare = scanner.next();
+            _continuare = scanner.next();
 
-        } while (continuare.equals("s"));
+        } while (_continuare.equals("s"));
     }
 
     private static void ClrScr() {
