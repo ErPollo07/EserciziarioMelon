@@ -1,6 +1,6 @@
 import java.util.Random;
 
-public class Tosatti_3E_12B_RollDadoStatistica {
+public class Tosatti_3E_13B_RollDadoStatistica {
     public static void main(String[] args) {
 
         int val;
@@ -11,35 +11,16 @@ public class Tosatti_3E_12B_RollDadoStatistica {
 
             val = valoreRandom(1,7);
             // System.out.printf("Valore %d\n", val);
+            // %d int
             // %f float
             // %s string
 
             FacceDado(val);
 
-            switch (val) {
-                case 1:
-                    frequenze[0]++;
-                    break;
-                case 2:
-                    frequenze[1]++;
-                    break;
-                case 3:
-                    frequenze[2]++;
-                    break;
-                case 4:
-                    frequenze[3]++;
-                    break;
-                case 5:
-                    frequenze[4]++;
-                    break;
-                case 6:
-                    frequenze[5]++;
-                    break;
-            }
+            frequenze[val - 1]++; // Upgrade the counter of the corresponding number
         }
 
         for (int i = 0; i < frequenze.length; i++) {
-
             System.out.printf("Faccia%d: %d\n", i + 1,  frequenze[i]);
         }
     }
