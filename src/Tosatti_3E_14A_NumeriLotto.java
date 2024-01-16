@@ -1,7 +1,7 @@
 import java.util.Random;
 
 
-public class Tosatti_3E_13A_NumeriLotto {
+public class Tosatti_3E_14A_NumeriLotto {
     public static void main(String[] args) {
 
         // Estrarre 5 numeri da 1 a 90
