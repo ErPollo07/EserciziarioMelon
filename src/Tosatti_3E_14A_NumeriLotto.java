@@ -35,6 +35,7 @@ public class Tosatti_3E_14A_NumeriLotto {
     }
 
     // Check if the value is available
+    // todo change method to check numbers with array that store extact nuber
     private static void valueChecker(int array[], int i, int minValue, int maxValue) {
         for (int k = 0; k < i; k++) {
             // If the value is already in the array, reassign it and recheck all array
