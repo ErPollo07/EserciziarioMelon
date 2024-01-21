@@ -1,9 +1,24 @@
 import java.util.Random;
+import java.util.Scanner;
 
 import static java.lang.Math.random;
 
 public class Comon {
-    public static void main(String[] args) { }
+    public static void main(String[] args) {  }
+
+
+    /**
+     * Copy this in main to get a pause
+     * */
+    private static void pause() {
+        Scanner scanner = new Scanner(System.in);
+
+        String _pause;
+
+        System.out.println("Premi invio per continuare");
+        _pause = scanner.nextLine(); // Pulizia del buffer
+        _pause = scanner.nextLine();
+    }
 
     /**
      * Clear screen on cmd
