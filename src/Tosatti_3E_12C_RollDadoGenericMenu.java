@@ -5,11 +5,9 @@ public class Tosatti_3E_12C_RollDadoGenericMenu {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        //int numberP1 = 0, numberP2 = 0;
-        int mod;
         int[] numbers = new int[2];
+        int mod;
 
-        //String namePlayer1 = "Player1", namePlayer2 = "Player2";
         String[] playersNames = new String[2];
         String _pause;
 
