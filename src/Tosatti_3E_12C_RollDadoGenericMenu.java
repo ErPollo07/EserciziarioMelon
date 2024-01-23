@@ -5,11 +5,11 @@ public class Tosatti_3E_12C_RollDadoGenericMenu {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        int numberP1 = 0, numberP2 = 0;
+        //int numberP1 = 0, numberP2 = 0;
         int mod;
         int[] numbers = new int[2];
 
-        String namePlayer1 = "Player1", namePlayer2 = "Player2";
+        //String namePlayer1 = "Player1", namePlayer2 = "Player2";
         String[] playersNames = new String[2];
         String _pause;
 
@@ -34,50 +34,50 @@ public class Tosatti_3E_12C_RollDadoGenericMenu {
 
                     // Take name of player 1
                     System.out.println("Player 1 inserisci il tuo nome: ");
-                    namePlayer1 = scanner.next();
+                    playersNames[0] = scanner.next();
 
                     // Take name of player 2
                     System.out.println("Player 2 inserisci il tuo nome: ");
-                    namePlayer2 = scanner.next();
+                    playersNames[1] = scanner.next();
 
                     // Take number of player 1
-                    numberP1 = simulazioneRoll(namePlayer1); // take number of player 1
-                    System.out.println("Il player " + namePlayer1 + " e' uscito: ");
-                    FacceDado(numberP1);
+                    numbers[0] = simulazioneRoll(playersNames[0]); // take number of player 1
+                    System.out.println("Il player " + playersNames[0] + " e' uscito: ");
+                    FacceDado(numbers[0]);
 
                     System.out.println("Premi invio per continuare");
                     _pause = scanner.nextLine(); // Pulizia del buffer
                     _pause = scanner.nextLine();
 
                     // Take number of player 2
-                    numberP2 = simulazioneRoll(namePlayer2); // take number of player 2
-                    System.out.println("Il player " + namePlayer2 + " e' uscito: ");
-                    FacceDado(numberP2);
+                    numbers[1] = simulazioneRoll(playersNames[1]); // take number of player 2
+                    System.out.println("Il player " + playersNames[1] + " e' uscito: ");
+                    FacceDado(numbers[1]);
 
                     Wait(1500);
 
                     break;
                 case 2:
 
-                    namePlayer2 = "Bot"; // The player 2 become the bot
+                    playersNames[1] = "Bot"; // The player 2 become the bot
 
                     // Take name of player
                     System.out.println("Player inserisci il tuo nome: ");
-                    namePlayer1 = scanner.next();
+                    playersNames[0] = scanner.next();
 
                     // Simulate the dice roll
-                    numberP1 = simulazioneRoll(namePlayer1); // take number of player 1
+                    numbers[0] = simulazioneRoll(playersNames[0]); // take number of player 1
                     System.out.println("Al player e' uscito: ");
-                    FacceDado(numberP1); // Print the corresponding face of the dice based on the random number of player 1
+                    FacceDado(numbers[0]); // Print the corresponding face of the dice based on the random number of player 1
 
 
                     System.out.println("Premi invio per continuare");
                     _pause = scanner.nextLine(); // Pulizia del buffer
                     _pause = scanner.nextLine();
 
-                    numberP2 = simulazioneRoll(namePlayer2); // Take the number of player 2 (bot)
+                    numbers[1] = simulazioneRoll(playersNames[1]); // Take the number of player 2 (bot)
                     System.out.println("Al bot e' uscito: ");
-                    FacceDado(numberP2);
+                    FacceDado(numbers[1]);
 
                     Wait(1500);
 
@@ -91,12 +91,12 @@ public class Tosatti_3E_12C_RollDadoGenericMenu {
             }
 
             if (!interruptGame) { // calculate the winning if the game isn't interrupted
-                if (numberP1 == numberP2) {
+                if (numbers[0] == numbers[1]) {
                     System.out.println("Parita'");
-                } else if (numberP1 > numberP2) {
-                    System.out.println("Ha vinto " + namePlayer1);
+                } else if (numbers[0] > numbers[1]) {
+                    System.out.println("Ha vinto " + playersNames[0]);
                 } else {
-                    System.out.println("Ha vinto " + namePlayer2);
+                    System.out.println("Ha vinto " + playersNames[1]);
                 }
 
                 // Pause before start another game
