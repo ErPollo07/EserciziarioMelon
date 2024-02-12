@@ -1,4 +1,3 @@
-import java.sql.SQLOutput;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -33,7 +32,7 @@ public class Tosatti_3E_15A_EstrazioniLotto {
         String _pause;
 
         do {
-            choice = printMenu(menuOptions, scanner);
+            choice = printMenu(menuOptions);
 
             switch (choice) {
                 case 1:
@@ -136,7 +135,7 @@ public class Tosatti_3E_15A_EstrazioniLotto {
                 "[2] - Giocatore"
         };
 
-        choice = printMenu(opzioni, scanner);
+        choice = printMenu(opzioni);
 
         switch (choice) {
             case 1:
@@ -183,11 +182,12 @@ public class Tosatti_3E_15A_EstrazioniLotto {
         return  casuale.nextInt(minValue,maxValue+1);
     }
 
-    private static int printMenu(String[] option, Scanner scanner) {
+    private static int printMenu(String[] option) {
+        Scanner scanner = new Scanner(System.in);
+
         int choiceMenu;
 
         do {
-
             ClrScr();
 
             System.out.println("=============");
@@ -205,8 +205,6 @@ public class Tosatti_3E_15A_EstrazioniLotto {
                 System.out.println("\nScelta errata");
                 Wait(1000);
             }
-
-
         } while (choiceMenu < 1 || choiceMenu > option.length - 1);
 
         return choiceMenu;
