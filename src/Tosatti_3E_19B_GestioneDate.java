@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Tosatti_3E_19A_GestioneDate {
+public class Tosatti_3E_19B_GestioneDate {
     public static void main(String[] args) {
         /*
         Dato un valore numerico intero che
@@ -36,7 +36,7 @@ public class Tosatti_3E_19A_GestioneDate {
 
         // Print the result
         System.out.println("Giorno: " + separateDate[0]);
-        System.out.println("Mese: " + separateDate[1]);
+        System.out.println("Mese: " + convertMonthToString(separateDate[1]));
         System.out.println("Anno: " + separateDate[2]);
     }
 
@@ -63,9 +63,36 @@ public class Tosatti_3E_19A_GestioneDate {
         return separateDate;
     }
 
+    /**
+     * If I pass m = 3, the method will return me "marzo".
+     * If I pass m = a number above 12, the method will return me "NOT VALID"
+     *
+     * @param m the number of the month
+     * @return the name of the month respective to the number passed as a parameter
+     */
+    private static String convertMonthToString(int m) {
+
+        String month = switch (m) {
+            case 1 -> "Gennaio";
+            case 2 -> "Febbraio";
+            case 3 -> "Marzo";
+            case 4 -> "Aprile";
+            case 5 -> "Maggio";
+            case 6 -> "Giugno";
+            case 7 -> "Luglio";
+            case 8 -> "Agosto";
+            case 9 -> "Settembre";
+            case 10 -> "Ottobre";
+            case 11 -> "Novembre";
+            case 12 -> "Dicembre";
+            default -> "NOT VALID";
+        };
+
+        return month;
+    }
 
     /**
-     * This method verify that the date is valid
+     * This method verifies that the date is valid
      *
      * @param date The date which we want to control
      * @return true if the date has eight digit, false if the date hasn't eight digit
