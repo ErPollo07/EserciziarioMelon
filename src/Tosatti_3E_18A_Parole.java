@@ -42,6 +42,8 @@ public class Tosatti_3E_18A_Parole {
         for (int i = 0; i < words.length; i++) {
             words[i] = "";
         }
+        // You can use this method to assign the value "" to each cell of the array.
+        // Arrays.fill(words, "");
 
         for (int i = 0; i < message.length(); i++) {
             // if there is a space, don't insert anything
