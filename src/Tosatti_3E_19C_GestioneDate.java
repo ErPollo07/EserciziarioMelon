@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Tosatti_3E_19C_GestioneDate {
     public static void main(String[] args) {
@@ -15,47 +16,47 @@ public class Tosatti_3E_19C_GestioneDate {
 
         Scanner scanner = new Scanner(System.in);
 
-        int date;
+        int date = 0;
         // array to store [day, month, year]
         int[] separateDate;
         boolean validityOfDate;
         int continueToinsert;
 
+        // Take day, months, year
         do {
-            // Take day, months, year
-            do {
-                System.out.println("Inserisci la data: ");
+            System.out.println("Inserisci la data: ");
+
+            try {
                 date = scanner.nextInt();
-
-                // If the date is too short or too long,
-                // tell the user how to insert the date
-                if (verifyValidityOfDate(date) != 8)
-                    System.out.println("inserire la data in questo formato ggmmyyyy TUTTO ATTACATO");
-                // verify is the date is long enough
-            } while (verifyValidityOfDate(date) != 8);
-
-            // call method to separate day, month, year
-            separateDate = separateDate(date);
-
-            // Check if the day is correct based on the month
-            validityOfDate = verifyDayMonthPair(separateDate[0], separateDate[1], checkLeapYear(separateDate[2]));
-
-            // Print the result
-            if (validityOfDate) {
-                System.out.println("Giorno: " + separateDate[0]);
-                System.out.println("Mese: " + convertMonthToString(separateDate[1]));
-                System.out.println("Anno: " + separateDate[2]);
-                System.out.println(checkLeapYear(separateDate[2]));
+            } catch (Exception e) {
+                System.out.println("La data inserta non e' valida");
+                validityOfDate = true;
             }
-            else {
+
+            validityOfDate = validadata(date);
+
+            // If the date is too short or too long,
+            // tell the user how to insert the date
+            if (!validityOfDate)
                 System.out.println("La data non e' valida");
+            else {
+                // call method to separate day, month, year
+                separateDate = separateDate(date);
+
+                validityOfDate = verifyDayMonthPair(separateDate[0], separateDate[1], checkLeapYear(separateDate[2]));
+
+                if (validityOfDate) {
+                    System.out.println(dataToString(separateDate));
+                }
+                else {
+                    System.out.println("la data non e' valida");
+                }
             }
+        } while (!validityOfDate);
+    }
 
-            System.out.println("Vuoi continuare: \n\t[1] - SI\n\t[2] - NO\nInserisci la scelta: ");
-            continueToinsert = scanner.nextInt();
-        } while(continueToinsert == 1);
-
-
+    private static String dataToString(int[] data) {
+        return Integer.toString(data[0]) + "/" + Integer.toString(data[1]) + "/" + Integer.toString(data[2]);
     }
 
     /**
@@ -80,14 +81,17 @@ public class Tosatti_3E_19C_GestioneDate {
      */
     private static int[] separateDate(int date) {
         int[] separateDate = new int[3];
-        int divisor = 10000;
 
-        for (int i = 2; i >= 0; i--) {
-            // insert in the correct position
-            separateDate[i] = date % divisor;
-            date /= divisor; // "delete" the part already insert
-            divisor = 100; // Update the divisor
-        }
+        // Year
+        separateDate[2] = date % 10000;
+        date /= 10000; // remove the year from the date
+
+        // Month
+        separateDate[1] = date % 100;
+        date /= 100; // remove the month from the date
+
+        // Day
+        separateDate[0] = date;
 
         return separateDate;
     }
@@ -100,8 +104,7 @@ public class Tosatti_3E_19C_GestioneDate {
      * @return the name of the month respective to the number passed as a parameter
      */
     private static String convertMonthToString(int m) {
-
-        String month = switch (m) {
+        return switch (m) {
             case 1 -> "Gennaio";
             case 2 -> "Febbraio";
             case 3 -> "Marzo";
@@ -116,30 +119,22 @@ public class Tosatti_3E_19C_GestioneDate {
             case 12 -> "Dicembre";
             default -> "NOT VALID";
         };
-
-        return month;
     }
 
     /**
      * This method verifies that the date is valid
      *
-     * @param date The date which we want to control
+     * @param numero The date which we want to control
      * @return true if the date has eight digit, false if the date hasn't eight digit
      * Es -
      * If I pass 1234567   -> false
      * If I pass 12345678  -> true
      * If I pass 123456789 -> false
      */
-    public static int verifyValidityOfDate(int date) {
-        int counter = 0;
-
-        // Count all the digit of the date number
-        do {
-            date = date / 10;
-            counter++;
-        } while (date > 0);
-
-        return counter;
+    //anno: 31129999
+    //01010001
+    private static boolean validadata(int numero){
+        return (numero>01010001 && numero<31129999);
     }
 
     /**
