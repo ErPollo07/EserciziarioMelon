@@ -3,23 +3,12 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class Tosatti_3E_19C_GestioneDate {
     public static void main(String[] args) {
-        /*
-        Dato un valore numerico intero che
-        rappresenta la data odierna nel formato
-        ggmmaaaa determinare i valori che
-        rappresentano il giorno,mese anno.
-                Es.: 30112011
-        giorno=30
-        mese=11
-        anno=2011
-        */
-
         Scanner scanner = new Scanner(System.in);
 
         int date = 0;
         // array to store [day, month, year]
         int[] separateDate;
-        boolean validityOfDate;
+        boolean validityOfDate = false;
         int continueToinsert;
 
         // Take day, months, year
@@ -131,8 +120,6 @@ public class Tosatti_3E_19C_GestioneDate {
      * If I pass 12345678  -> true
      * If I pass 123456789 -> false
      */
-    //anno: 31129999
-    //01010001
     private static boolean validadata(int numero){
         return (numero>01010001 && numero<31129999);
     }
