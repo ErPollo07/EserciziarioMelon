@@ -43,6 +43,7 @@ public class Tosatti_3E_19D_GestioneDate {
         // Ask the user how many day he wants to increment or decrement the date
         switch (printMenu(sceltaIncDec, scanner)) {
             case 1:
+                // chiedo all'utente di quanti giorni vuole incrementare la data
                 do {
                     dataNonValida = false;
                     System.out.println("Di quanti giorni vuoi incremntare la data?");
@@ -60,10 +61,15 @@ public class Tosatti_3E_19D_GestioneDate {
                     }
                 } while (dataNonValida);
 
+                // chiamo la funzione data_up per incrementare la data
                 dataIncrementata = data_up(dataSeparata, quantiGiorni);
+
+                // stampo i valori a schermo
+                System.out.println("Ecco la data incrementata di " + quantiGiorni + " giorni: " + dataToString1(dataIncrementata));
 
                 break;
             case 2:
+                // chiedo all'utente di quanti giorni vuole decrementare la data
                 do {
                     System.out.println("Di quanti giorni vuoi decrementare la data?");
 
@@ -80,30 +86,87 @@ public class Tosatti_3E_19D_GestioneDate {
                     }
                 } while (dataNonValida);
 
+                // chiamo la funzione data_down per decrementare la data
                 dataDecrementata = data_down(dataSeparata, quantiGiorni);
+
+                // stampo i valori a schermo
+                System.out.println("Ecco la data decrementata di " + quantiGiorni + " giorni: " + dataToString1(dataDecrementata));
 
                 break;
         }
     }
 
-
     private static int[] data_up(int[] data, int up) {
-        int[] dataInc = new int[3];
-        // verifico in quale mese siamo in modo da avere il numero massimo dei giorni del mese
+        int[] dataInc = data;
+        int giorniMax = getMaxDay(dataInc[1], dataInc[2]);
 
-        // algoritmo per incrementare
+        for (int i = 0; i < up; i++) {
+            dataInc[0]++;
+            // Se supero il limite di giorni di quel mese,
+            // allora:
+            //  - resetto i giorni a 1
+            //  - incremento il mese e decremento i mesi rimanenti
+            if (dataInc[0] > giorniMax) {
+                dataInc[0] = 1;
+                dataInc[1]++;
+                // Se i mesi rimanenti sono minori di 0 significa che bisogna cambiare anno
+                // quindi:
+                //  - incremento l'anno
+                //  - resetto il mese a 1
+                //  - resetto i mesi rimanenti a 11
+                if (dataInc[1] > 12) {
+                    dataInc[2]++;
+                    dataInc[1] = 1;
+                }
+                // calcolo i giorni massimi nel mese in cui sono
+                giorniMax = getMaxDay(dataInc[1], dataInc[2]);
+            }
+        }
 
         return dataInc;
     }
 
     private static int[] data_down(int[] data, int down) {
-        int[] dataDec = new int[3];
-        // verifico in quale mese siamo in modo da avere il numero massimo dei giorni del mese
+        int[] dataDec = data;
 
-        // algoritmo per decrementare
+        for (int i = down; i > 0; i--) {
+            dataDec[0]--;
+            // Se il giorno risulta <= 0,
+            // allora:
+            //  - decremento il valore del mese
+            //  - controllo di avere ancora mesi a disposizione
+            //  - resetto i giorni al massimo valore di giorni del mese corrente
+            if (dataDec[0] <= 0) {
+                dataDec[1]--;
+                // Se il mese e' < 1
+                // allora:
+                //  - decremento il valore dell'anno
+                //  - resetto il mese a 12
+                if (dataDec[1] < 1) {
+                    dataDec[2]--;
+                    dataDec[1] = 12;
+                }
+                // prendo il numero massimo di giorni del mese corrente
+                dataDec[0] = getMaxDay(dataDec[1], dataDec[2]);
+            }
+        }
 
         return dataDec;
     }
+
+    private static int getMaxDay(int mese, int anno) {
+        switch (mese) {
+            case 1, 3, 5, 7, 8, 10, 12:
+                return 31;
+            case 4, 6, 9, 11:
+                return 30;
+            case 2:
+                if (Bisestile(anno)) return 29;
+                else return 28;
+        }
+        return 0;
+    }
+
 
     /* Separazione della data inserita in giorno, mese ed anno*/
     //12042024
