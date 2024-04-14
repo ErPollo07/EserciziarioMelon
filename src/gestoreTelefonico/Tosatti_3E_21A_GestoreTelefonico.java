@@ -25,7 +25,7 @@ public class Tosatti_3E_21A_GestoreTelefonico {
         };
 
         String[] ricercaContatoSceltaMenu = {
-                "Come vuoi elimnare il contatto",
+                "Come vuoi cercare il contatto",
                 "Nome e cognome",
                 "Numero di telefono"
         };
@@ -36,6 +36,7 @@ public class Tosatti_3E_21A_GestoreTelefonico {
         Contatto[] gestore = new Contatto[nMax];
 
         String nomeCercare, cognomeCercare, telefonoCercare;
+        Contatto contRicerca = new Contatto();
         String nomeCancellare, cognomeCancellare, telefonoCancellare;
 
 
@@ -59,15 +60,24 @@ public class Tosatti_3E_21A_GestoreTelefonico {
                 // Ricerca
                 case 3: {
                     if (contrattiVenduti != 0) {
-                        System.out.println("Inserirsci il nome da cercare: ");
-                        nomeCercare = scanner.nextLine();
+                        switch (menu(ricercaContatoSceltaMenu, scanner)) {
+                            case 1:
+                                System.out.println("Inserirsci il nome da cercare: ");
+                                nomeCercare = scanner.nextLine();
 
-                        System.out.println("Inserisci il cognome da cercare: ");
-                        cognomeCercare = scanner.nextLine();
+                                System.out.println("Inserisci il cognome da cercare: ");
+                                cognomeCercare = scanner.nextLine();
 
-                        //Ci sono contratti venduti
-                        //lettura, ricerca, visualizzazione
-                        Contatto contRicerca = ricerca(gestore, nomeCercare, cognomeCercare, contrattiVenduti);
+                                contRicerca = ricercaConGeneralita(gestore, nomeCercare, cognomeCercare, contrattiVenduti);
+                                break;
+                            case 2:
+                                System.out.println("Inserirsci il numero di telefono da cercare: ");
+                                telefonoCercare = scanner.nextLine();
+
+                                contRicerca = ricercaConTelefono(gestore, telefonoCercare, contrattiVenduti);
+                                break;
+                        }
+
 
                         if (contRicerca != null) {
                             System.out.println("Ecco il contatto che cercavi");
@@ -111,10 +121,6 @@ public class Tosatti_3E_21A_GestoreTelefonico {
                             break;
 
                     }
-
-
-
-
                     break;
                 case 5:
                     break;
@@ -128,7 +134,11 @@ public class Tosatti_3E_21A_GestoreTelefonico {
     private static boolean eliminaContattoConGeneralita(Contatto[] gestore, String nome, String cognome, int contrattiVenduti) {
         for (int i = 0; i < contrattiVenduti; i++) {
             if (gestore[i].nome.equals(nome) && gestore[i].cognome.equals(cognome)) {
-                gestore[i] = null;
+                // sposto tutti i contatti una posizione in meno
+                for (int j = i+1; j < contrattiVenduti; j++) {
+                    gestore[i] = gestore[j];
+                }
+
                 return true;
             }
         }
@@ -138,8 +148,12 @@ public class Tosatti_3E_21A_GestoreTelefonico {
 
     private static boolean eliminaContattoConNumero(Contatto[] gestore, String numero, int contrattiVenduti) {
         for (int i = 0; i < contrattiVenduti; i++) {
-            if (gestore[i].nome.equals("") && gestore[i].cognome.equals("")) {
-                gestore[i] = null;
+            if (gestore[i].telefono.equals(numero)) {
+                // sposto tutti i contatti una posizione in meno
+                for (int j = i+1; j < contrattiVenduti; j++) {
+                    gestore[i] = gestore[j];
+                }
+
                 return true;
             }
         }
@@ -172,9 +186,19 @@ public class Tosatti_3E_21A_GestoreTelefonico {
         return persona;
     }
 
-    private static Contatto ricerca(Contatto[] gestore, String nome, String cognome, int contrattiVenduti) {
+    private static Contatto ricercaConGeneralita(Contatto[] gestore, String nome, String cognome, int contrattiVenduti) {
         for (int i = 0; i < contrattiVenduti; i++) {
             if (gestore[i].nome.equals(nome) && gestore[i].cognome.equals(cognome)) {
+                return gestore[i];
+            }
+        }
+
+        return null;
+    }
+
+    private static Contatto ricercaConTelefono(Contatto[] gestore, String numero, int contrattiVenduti) {
+        for (int i = 0; i < contrattiVenduti; i++) {
+            if (gestore[i].telefono.equals(numero)) {
                 return gestore[i];
             }
         }
