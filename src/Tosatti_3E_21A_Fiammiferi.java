@@ -2,7 +2,7 @@ import java.util.Scanner;
 import static Utility.Tools.printFiammiferi;
 import static Utility.Tools.printMenu;
 
-public class Main {
+public class Tosatti_3E_21A_Fiammiferi {
     static Scanner scanner = new Scanner(System.in);
 
     static String[] players = new String[2];

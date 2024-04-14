@@ -3,7 +3,7 @@
 public class Tosatti_3E_07A_NumeriPrimi {
     public static void main(String[] args) {
 
-        for (int i = 1; i < 10; i++) {
+        for (int i = 1; i < 15; i++) {
 
             if (i > 1) {
                 if (IsPrime(i)) {
