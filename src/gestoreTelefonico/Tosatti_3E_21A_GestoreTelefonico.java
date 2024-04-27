@@ -119,7 +119,6 @@ public class Tosatti_3E_21A_GestoreTelefonico {
                                 System.out.println("Il contatto non era in lista.");
                             }
                             break;
-
                     }
                     break;
                 case 5:
