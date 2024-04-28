@@ -18,6 +18,13 @@ public class Tosatti_3E_22A_DividiStringa {
         }
     }
 
+    /**
+     * This method returns an array of strings with length which is max 40 chars.
+     * If there isn't a blank space at the 40th char in string {@code s}
+     * then the algorithm retreats to the nearest space.
+     * @param s the string to divide
+     * @return an array of sub-string of param {@code s}
+     */
     private static String[] split(String s) {
         String[] splitString = new String[1];
         int indexSplit = 0;
@@ -51,13 +58,7 @@ public class Tosatti_3E_22A_DividiStringa {
             indexSplit++;
 
             // if indexSplit is grander then the length of the array splitString then enlarge the array
-            if (indexSplit >= splitString.length) {
-                String[] temp = new String[splitString.length + 1];
-                for (int i = 0; i < indexSplit; i++) {
-                    temp[i] = splitString[i];
-                }
-                splitString = temp;
-            }
+            splitString = enlargeArray(splitString);
 
             // move startIndex and endIndex
             startIndex = endIndex;
@@ -71,8 +72,23 @@ public class Tosatti_3E_22A_DividiStringa {
                 splitString[indexSplit] = s.substring(startIndex);
                 continueToSplit = false;
             }
-        } while (continueToSplit); // I can put while (true) and continueToSplit replace with a break? Ask raspa
+        } while (continueToSplit); // I can put while (true) and continueToSplit = false replace with a break? Ask raspa
 
+        // If the last string is null set it to a blank string
+        if (splitString[splitString.length - 1] == null) splitString[splitString.length - 1] = "";
         return splitString;
+    }
+
+    /**
+     * Returns a string array with length of {@code startArray} + 1.
+     * @param startArray the array which we want to enlarge
+     * @return a string array with one space more then {@code startArray} and all the content of {@code startArray}
+     */
+    private static String[] enlargeArray(String[] startArray) {
+        String[] temp = new String[startArray.length + 1];
+        for (int i = 0; i < startArray.length; i++) {
+            temp[i] = startArray[i];
+        }
+        return temp;
     }
 }
